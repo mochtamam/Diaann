@@ -1,157 +1,115 @@
 <!DOCTYPE html>
-<html>
-  <meta charset="UTF-8" /><meta
-    content="width=device-width, initial-scale=1, user-scalable=1, minimum-scale=1, maximum-scale=5"
-    name="viewport"
-  /><meta content="IE=edge" http-equiv="X-UA-Compatible" /><link
-    href="https://feeldreams.github.io/withyou/style.css"
-    rel="stylesheet"
-    type="text/css"
-  />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Shippori+Antique:wght@400;700&display=swap"
-    rel="stylesheet"
-  />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap"
-    rel="stylesheet"
-  />
-
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script>
-  <script src="https://unpkg.com/typeit@8.7.0/dist/index.umd.js"></script>
-  <script
-    src="https://kit.fontawesome.com/4f3ce16e3e.js"
-    crossorigin="anonymous"
-  ></script>
-  <style>
-    .kumpulanstiker img {
-      width: 150px;
-      height: 200px;
-    }
-  </style>
+<html lang="id">
   <head>
-    <title>Dian</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Puzzle Cinta Untukmu</title>
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        text-align: center;
+        background: linear-gradient(
+          to right,
+          rgb(0, 153, 255),
+          rgb(0, 26, 255)
+        );
+        padding: 30px;
+      }
+
+      #puzzle-container {
+        display: grid;
+        grid-template-columns: repeat(4, 80px);
+        grid-gap: 15px;
+        justify-content: center;
+        margin-top: 40px;
+      }
+
+      .puzzle-piece {
+        width: 80px;
+        height: 80px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 14px;
+        transition: 0.3s;
+      }
+
+      .puzzle-piece.clicked {
+        background-color: rgb(0, 119, 139);
+        color: #fff;
+        pointer-events: none;
+      }
+
+      #final-message {
+        margin-top: 50px;
+      }
+
+      .final-image {
+        width: 200px;
+        border-radius: 20px;
+        margin-top: 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      }
+    </style>
   </head>
   <body>
-    <!-- Ganti Audio di sini -->
-    <audio
-      src="https://feeldreams.github.io/fullsenyum.mp3"
-      id="linkmp3"
-      class="sembunyi"
-    ></audio>
+    <h1>Sentuh Setiap Kotak, Ada Pesan Untukmu!</h1>
+    <div id="puzzle-container"></div>
 
-    <div id="bodyblur">
-      <!-- Wallpaper --><img src="bg.gif" id="wallpaper" />
-      <div id="beneranblur"></div>
+    <div id="final-message" style="display: none">
+      <h2>Selamat! Kamu Sudah Membuka Semuanya 💖</h2>
+      <img src="dian.jpg" alt="Foto Kita" class="final-image" />
+      <p>Aku sayang kamu, sekarang dan selamanya. 🌸</p>
     </div>
 
-    <div id="Content">
-      <div id="kadoIn">
-        <!-- Tombol Surat --><img
-          src="https://feeldreams.github.io/kadoin.png"
-        />
-      </div>
-      <p id="ket">Klik Kadonya!</p>
-
-      <div class="kumpulanstiker">
-        <!-- Stiker untuk Konten -->
-        <img src="dian.jpg" id="fotostiker" />
-        <img src="dian.jpg" id="fotostiker2" />
-        <img src="dian.jpg" id="fotostiker3" />
-      </div>
-      <p id="halo" class="halo">Halo Diannn!!</p>
-      <!-- Konten Pesan Setelah Aksi -->
-      <p id="halo2" class="halo sty2">Amu gelem ga dadi pacarku?? <3</p>
-      <p id="halo3" class="halo sty3">
-        Maap mek iso ngungkapno iki nak kene, Maap sisan ga seromantis arek liyo
-      </p>
-      <!-- Tanggal Otomatis Sesuai Hari Ini -->
-      <p id="tanggal" class="halo sty3"></p>
-
-      <!-- Konten Pesan Akhir -->
-      <p id="kalimatbawah">Tak enteni jawaban ee nang WA yahh hehe ❤️</p>
-
-      <div>
-        <blockquote id="bq" data-text="&#9829;">
-          <!-- Konten Pembukaan -->
-          <p id="kalimat">Aku arep ngomong sesuatu</p>
-          <p id="kalimatb">To The Point ae yoo hehee</p>
-          <p id="kalimatc">Mungkin tanpa aku ngomong amu wes ngerti see wkwk</p>
-          <p id="kalimatd">Jujur aku seneng amu</p>
-          <p id="kalimate">
-            Tapi sakjane bingung se ngomong ee nang amu piye🤭
-          </p>
-          <p id="kalimatf">Klik LOVE di Samping Kiri ya!</p>
-
-          <p id="opsL">Klik untuk Lanjut</p>
-        </blockquote>
-      </div>
-
-      <!-- Tombol Kirim Pesan -->
-      <div id="Tombol"><a id="By">&#128140; Balas</a></div>
-
-      <!-- Pesan yang dikirim ke WhatsApp -->
-      <span id="pesanWA" class="sembunyi">Aku mau/gamau dadi pacarmu</span>
-    </div>
-
-    <!-- Jangan Edit Bagian Ini -->
     <script>
-      const body = document.querySelector("body");
-      const style = document.createElement("style");
-      var today = new Date();
-      var dd = String(today.getDate()).padStart(2, "0");
-      var mm = String(today.getMonth() + 1).padStart(2, "0");
-      var yyyy = today.getFullYear();
-      const monthNames = [
-        "Januari",
-        "Februari",
-        "Maret",
-        "April",
-        "Mei",
-        "Juni",
-        "Juli",
-        "Agustus",
-        "September",
-        "Oktober",
-        "November",
-        "Desember",
+      const messages = [
+        "Manisnya kayak kamu 🍭",
+        "Makasih udah ada buat aku 💬",
+        "Kamu bikin hariku berwarna 🌈",
+        "Tetap senyum ya 😊",
+        "Cintaku tulus buat kamu ❤️",
+        "Aku bangga punya kamu 🏆",
+        "Kamu lucu banget 🤭",
+        "Senyummu candu buatku 😍",
+        "Kamu luar biasa ✨",
+        "Aku di sini buatmu 🤝",
+        "Peluk dari jauh 🤗",
+        "Kamu berharga 💎",
+        "Jangan pernah berubah! 🙏",
+        "Aku butuh kamu 💌",
+        "Semangat hari ini! 🔥",
+        "I love you 3000 💖",
       ];
-      today = dd + " " + monthNames[today.getMonth()] + " " + yyyy;
-      inikuis = 0;
-      ftganti = 0;
-      flag = 1;
-      flagg = 1;
-      fungsi = 0;
-      ftfungsi = 0;
-      fungsiAwal = 0;
-      fungsitimer = 0;
-      vketikhalo = halo.innerHTML;
-      halo.innerHTML = "";
-      vketikhalo2 = halo2.innerHTML;
-      halo2.innerHTML = "";
-      pesanwhatsapp = pesanWA.innerHTML;
-      deffotostiker = fotostiker.src;
-      Content.style = "opacity:1;margin-top:16vh;";
-      audio = new Audio("" + linkmp3.src);
-      tanggal.innerHTML = "- " + today + " -";
-      function createHeart() {
-        const heart = document.createElement("div");
-        heart.className = "fas fa-heart";
-        heart.style.left = Math.random() * 90 + "vw";
-        heart.style.animationDuration = Math.random() * 3 + 2 + "s";
-        body.appendChild(heart);
-      }
-      setInterval(function name(params) {
-        var heartArr = document.querySelectorAll(".fa-heart");
-        if (heartArr.length > 100) {
-          heartArr[0].remove();
-        }
-      }, 100);
+
+      const container = document.getElementById("puzzle-container");
+      let clickedCount = 0;
+
+      messages.forEach((msg, index) => {
+        const piece = document.createElement("div");
+        piece.className = "puzzle-piece";
+        piece.innerText = "Klik";
+
+        piece.addEventListener("click", () => {
+          piece.classList.add("clicked");
+          piece.innerText = messages[index];
+          clickedCount++;
+          if (clickedCount === messages.length) {
+            document.getElementById("final-message").style.display = "block";
+            window.scrollTo({
+              top: document.body.scrollHeight,
+              behavior: "smooth",
+            });
+          }
+        });
+
+        container.appendChild(piece);
+      });
     </script>
-    <script src="https://feeldreams.github.io/withyou/script.js"></script>
-    <!-- Sampai Sini -->
   </body>
 </html>
