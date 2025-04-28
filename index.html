@@ -10,8 +10,8 @@
         text-align: center;
         background: linear-gradient(
           to right,
-          rgb(0, 153, 255),
-          rgb(0, 26, 255)
+          rgb(83, 157, 255),
+          rgb(0, 40, 216)
         );
         padding: 30px;
       }
@@ -40,7 +40,7 @@
       }
 
       .puzzle-piece.clicked {
-        background-color: rgb(0, 119, 139);
+        background-color: rgb(0, 40, 218);
         color: #fff;
         pointer-events: none;
       }
@@ -55,39 +55,42 @@
         margin-top: 20px;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
       }
-      
+
+      /* Hide audio controls */
       audio {
-      display: none;
-    }
+        display: none;
+      }
     </style>
   </head>
   <body>
     <h1>Sentuh Setiap Kotak, Ada Pesan Untukmu!</h1>
+
     <div id="puzzle-container"></div>
 
     <div id="final-message" style="display: none">
       <h2>Selamat! Kamu Sudah Membuka Semuanya 💖</h2>
       <img src="dian1.jpg" alt="Foto Kita" class="final-image" />
-      <p>Aku sayang kamu, sekarang dan selamanya. 🌸</p>
+      <p>Jangan sering-sering badmood yaaa🌸</p>
     </div>
 
+    <!-- Musik Background -->
     <audio id="bg-music" autoplay loop>
-    <source src="anugerah.mp3" type="audio/mpeg">
-    Browser kamu tidak mendukung audio.
-  </audio>
+      <source src="anugerah.mp3" type="audio/mpeg" />
+      Browser kamu tidak mendukung audio.
+    </audio>
 
     <script>
       const messages = [
-        "Manisnya kayak kamu 🍭",
+        "Manisnya kayak kamuu 🍭",
         "Makasih udah ada buat aku 💬",
         "Kamu bikin hariku berwarna 🌈",
         "Tetap senyum ya 😊",
-        "Cintaku tulus buat kamu ❤️",
-        "Aku bangga punya kamu 🏆",
+        "Jangan sering-sering badmood ❤️",
+        "Jangan marah muluu 😂",
         "Kamu lucu banget 🤭",
         "Senyummu candu buatku 😍",
         "Kamu luar biasa ✨",
-        "Aku di sini buatmu 🤝",
+        "Meskipun kadang tiba tiba badmood😝",
         "Peluk dari jauh 🤗",
         "Kamu berharga 💎",
         "Jangan pernah berubah! 🙏",
@@ -118,6 +121,14 @@
         });
 
         container.appendChild(piece);
+      });
+
+      // Play music on user interaction (beberapa browser perlu klik user dulu)
+      document.addEventListener("click", function () {
+        const music = document.getElementById("bg-music");
+        if (music.paused) {
+          music.play().catch(() => {});
+        }
       });
     </script>
   </body>
